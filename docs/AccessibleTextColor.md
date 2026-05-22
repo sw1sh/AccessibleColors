@@ -4,7 +4,6 @@ Name: AccessibleTextColor
 Context: Wolfram`AccessibleColors`
 Paclet: Wolfram/AccessibleColors
 URI: Wolfram/AccessibleColors/ref/AccessibleTextColor
-Description: AccessibleTextColor[bg] gives the most legible text color for a background.
 Keywords: [accessibility, text, contrast, color, WCAG]
 SeeAlso: [WCAGContrastRatio, WCAGLevel, AdjustForContrast]
 RelatedGuides: [AccessibleColors]
@@ -25,6 +24,7 @@ Dark text reads best on a light background:
 ```wl
 AccessibleTextColor[LightBlue]
 ```
+<!-- => GrayLevel[0] (black) -->
 
 ## Scope
 
@@ -33,6 +33,7 @@ White text wins on a dark background:
 ```wl
 AccessibleTextColor[RGBColor[0.1, 0.1, 0.4]]
 ```
+<!-- => GrayLevel[1] (white) -->
 
 ## Options
 
@@ -41,6 +42,36 @@ Restrict the choice to a custom palette:
 ```wl
 AccessibleTextColor[Orange, "Candidates" -> {Red, Blue, White, Black}]
 ```
+<!-- => GrayLevel[0] (black) -->
+
+## Applications
+
+Pick a legible label color for each swatch in a palette:
+
+```wl
+Association[# -> AccessibleTextColor[#] & /@ {LightBlue, Darker[Green], Yellow, Purple}]
+```
+<!-- => <|LightBlue -> GrayLevel[0], Darker[Green] -> GrayLevel[0], Yellow -> GrayLevel[0], Purple -> GrayLevel[1]|> -->
+
+## Properties and Relations
+
+The returned color is the candidate with the greatest `WCAGContrastRatio` against
+the background, so the resulting pair scores as high as possible:
+
+```wl
+With[{bg = Orange}, {AccessibleTextColor[bg], WCAGContrastRatio[AccessibleTextColor[bg], bg], WCAGLevel[AccessibleTextColor[bg], bg]}]
+```
+<!-- => {GrayLevel[0], 8.31364, "AAA"} -->
+
+## Possible Issues
+
+On a mid-tone background even the best of black or white gives only moderate
+contrast, so a single text color may not reach AAA:
+
+```wl
+{AccessibleTextColor[GrayLevel[0.5]], WCAGContrastRatio[AccessibleTextColor[GrayLevel[0.5]], GrayLevel[0.5]]}
+```
+<!-- => {GrayLevel[0], 5.28082} -->
 
 ## Neat Examples
 
@@ -49,3 +80,4 @@ Swatches showing the chosen text color on each background:
 ```wl
 Row[Table[Framed[Style["Ag", AccessibleTextColor[bg], 18], Background -> bg, FrameMargins -> 8], {bg, {LightBlue, Darker[Red], Yellow, RGBColor[0.1, 0.1, 0.4]}}]]
 ```
+<!-- => a row of four swatches: "Ag" in black on the light blue and yellow grounds, in white on the dark red and navy grounds -->

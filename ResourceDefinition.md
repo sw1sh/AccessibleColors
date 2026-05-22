@@ -1,13 +1,14 @@
 ---
 Template: Paclet
 ResourceType: Paclet
-Name: AccessibleColors
+Name: Wolfram/AccessibleColors
 Context: Wolfram`AccessibleColors`
 Paclet: Wolfram/AccessibleColors
-Description: WCAG color-contrast and accessibility utilities for the Wolfram Language.
+Description: WCAG color-contrast and accessibility utilities for the Wolfram Language
 ContributedBy: Nikolay Murzin
 Keywords: [accessibility, WCAG, contrast, color, a11y]
-Links: ["https://www.w3.org/WAI/WCAG21/"]
+SourceControlURL: https://github.com/sw1sh/AccessibleColors
+Links: ["[WCAG 2.1 contrast guidance](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)"]
 ---
 
 ## Details & Options

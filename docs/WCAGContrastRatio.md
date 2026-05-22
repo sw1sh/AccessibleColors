@@ -4,7 +4,6 @@ Name: WCAGContrastRatio
 Context: Wolfram`AccessibleColors`
 Paclet: Wolfram/AccessibleColors
 URI: Wolfram/AccessibleColors/ref/WCAGContrastRatio
-Description: WCAGContrastRatio[c1, c2] gives the WCAG 2.x contrast ratio between two colors.
 Keywords: [contrast, WCAG, accessibility, luminance, color]
 SeeAlso: [WCAGLevel, AccessibleTextColor, AdjustForContrast]
 RelatedGuides: [AccessibleColors]
@@ -12,7 +11,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`WCAGContrastRatio[c1, c2]` gives the WCAG 2.x contrast ratio between colors `c1` and `c2`, a number from 1 (no contrast) to 21 (black on white).
+`WCAGContrastRatio[c$1, c$2]` gives the WCAG 2.x contrast ratio between colors `c$1` and `c$2`, a number from 1 (no contrast) to 21 (black on white).
 
 ## Details & Options
 
@@ -25,6 +24,7 @@ Black on white is the maximum possible contrast:
 ```wl
 WCAGContrastRatio[Black, White]
 ```
+<!-- => 21. -->
 
 ## Scope
 
@@ -33,14 +33,42 @@ Any color expression that `ColorConvert` understands is accepted:
 ```wl
 WCAGContrastRatio[RGBColor[0.2, 0.2, 0.7], White]
 ```
+<!-- => 9.28716 -->
+
+## Applications
+
+Rank candidate foreground colors by their contrast against a white background:
+
+```wl
+AssociationMap[WCAGContrastRatio[#, White] &, {Black, Blue, Red, Gray}]
+```
+<!-- => <|Black -> 21., Blue -> 8.59247, Red -> 3.99848, Gray -> 3.97665|> -->
+
+## Properties and Relations
+
+A color compared with itself always has the minimum ratio of 1:
+
+```wl
+WCAGContrastRatio[Blue, Blue]
+```
+<!-- => 1. -->
+
+The ratio is symmetric, so the order of the two colors never matters:
+
+```wl
+WCAGContrastRatio[White, Black] == WCAGContrastRatio[Black, White]
+```
+<!-- => True -->
 
 ## Possible Issues
 
-The ratio is symmetric, so argument order does not change the result:
+Because the ratio depends only on luminance, two vivid but equally light hues can
+contrast poorly despite looking very different:
 
 ```wl
-{WCAGContrastRatio[Gray, White], WCAGContrastRatio[White, Gray]}
+WCAGContrastRatio[Hue[0.1], Hue[0.4]]
 ```
+<!-- => 1.57984 (close to the no-contrast floor of 1) -->
 
 ## Neat Examples
 
@@ -49,3 +77,4 @@ Contrast of a saturated hue against white, swept around the color wheel:
 ```wl
 Table[Round[WCAGContrastRatio[Hue[h], White], 0.01], {h, 0, 0.8, 0.2}]
 ```
+<!-- => {4., 1.18, 1.36, 4.83, 4.19} -->

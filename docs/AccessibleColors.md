@@ -17,4 +17,7 @@ AccessibleColors adds the WCAG accessibility layer the Wolfram Language does not
 
 ## Functions
 
-The package centers on `WCAGContrastRatio` and the helpers built on it: `WCAGLevel` reports conformance, `AccessibleTextColor` picks legible text for a background, and `AdjustForContrast` repairs a color pair to meet a target ratio.
+- `WCAGContrastRatio` the WCAG 2.x contrast ratio between two colors, from 1 to 21
+- `WCAGLevel` the conformance level (`"AAA"`, `"AA"` or `"Fail"`) of a color pair
+- `AccessibleTextColor` the most legible text color for a given background
+- `AdjustForContrast` nudges a foreground color until it meets a target contrast

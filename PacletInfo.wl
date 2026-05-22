@@ -12,7 +12,13 @@ PacletObject[<|
         {
             "Kernel",
             "Root" -> "Kernel",
-            "Context" -> "Wolfram`AccessibleColors`"
+            "Context" -> "Wolfram`AccessibleColors`",
+            "Symbols" -> {
+                "Wolfram`AccessibleColors`WCAGContrastRatio",
+                "Wolfram`AccessibleColors`WCAGLevel",
+                "Wolfram`AccessibleColors`AccessibleTextColor",
+                "Wolfram`AccessibleColors`AdjustForContrast"
+            }
         },
         {
             "Documentation",
