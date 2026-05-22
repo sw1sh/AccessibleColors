@@ -102,6 +102,6 @@ LightDarkSwitched[AccessibleTextColor[White], AccessibleTextColor[Black]]
 Track the accessible text color live as the background is dragged:
 
 ```wl
-DynamicModule[{bg = LightBlue}, Column[{Framed[Style["Sample", Dynamic[AccessibleTextColor[bg]], 20], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}]]
+DynamicModule[{bg = LightBlue}, Column[{Framed[Dynamic[Style["Sample", AccessibleTextColor[bg], 20]], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}]]
 ```
 <!-- => an interactive panel whose "Sample" text flips between black and white as the color slider moves -->
