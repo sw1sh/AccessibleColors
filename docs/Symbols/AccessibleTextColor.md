@@ -4,8 +4,8 @@ Name: AccessibleTextColor
 Context: Wolfram`AccessibleColors`
 Paclet: Wolfram/AccessibleColors
 URI: Wolfram/AccessibleColors/ref/AccessibleTextColor
-Keywords: [accessibility, text, contrast, color, WCAG]
-SeeAlso: [WCAGContrastRatio, WCAGLevel, AdjustForContrast]
+Keywords: [accessibility, text, contrast, color, WCAG, light-dark]
+SeeAlso: [WCAGContrastRatio, WCAGLevel, AdjustForContrast, LightDarkSwitched, LightDarkAutoColorRules, StandardRed]
 RelatedGuides: [AccessibleColors]
 ---
 
@@ -16,6 +16,8 @@ RelatedGuides: [AccessibleColors]
 ## Details & Options
 
 `"Candidates"` sets the colors to choose from; the one with the greatest `WCAGContrastRatio` against `bg` is returned.
+
+`AccessibleTextColor` complements the built-in color tools. It accepts any color `ColorConvert` understands, including the curated `StandardRed`, `StandardBlue`, ... palette designed for consistent appearance, and chooses legible text to sit on those colors. For light/dark adaptive interfaces, wrap a pair of choices in `LightDarkSwitched` (or supply `LightDarkAutoColorRules`) so the text adapts to the active UI mode. See the [Accessibility](paclet:guide/Accessibility) guide for the broader Wolfram Language accessibility features.
 
 ## Basic Examples
 
@@ -53,6 +55,13 @@ Association[# -> AccessibleTextColor[#] & /@ {LightBlue, Darker[Green], Yellow, 
 ```
 <!-- => <|LightBlue -> GrayLevel[0], Darker[Green] -> GrayLevel[0], Yellow -> GrayLevel[0], Purple -> GrayLevel[1]|> -->
 
+The same works for the built-in `Standard*` palette, so labels on those colors stay legible:
+
+```wl
+AssociationMap[AccessibleTextColor, {StandardRed, StandardGreen, StandardBlue, StandardYellow}]
+```
+<!-- => each maps to GrayLevel[0] (black) -->
+
 ## Properties and Relations
 
 The returned color is the candidate with the greatest `WCAGContrastRatio` against
@@ -81,3 +90,18 @@ Swatches showing the chosen text color on each background:
 Row[Table[Framed[Style["Ag", AccessibleTextColor[bg], 18], Background -> bg, FrameMargins -> 8], {bg, {LightBlue, Darker[Red], Yellow, RGBColor[0.1, 0.1, 0.4]}}]]
 ```
 <!-- => a row of four swatches: "Ag" in black on the light blue and yellow grounds, in white on the dark red and navy grounds -->
+
+Make a light/dark adaptive text color with `LightDarkSwitched` - black on the
+light-mode (white) background, white on the dark-mode (black) one:
+
+```wl
+LightDarkSwitched[AccessibleTextColor[White], AccessibleTextColor[Black]]
+```
+<!-- => LightDarkSwitched[GrayLevel[0], GrayLevel[1]] -->
+
+Track the accessible text color live as the background is dragged:
+
+```wl
+DynamicModule[{bg = LightBlue}, Column[{Framed[Style["Sample", Dynamic[AccessibleTextColor[bg]], 20], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}]]
+```
+<!-- => an interactive panel whose "Sample" text flips between black and white as the color slider moves -->
