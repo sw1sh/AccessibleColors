@@ -8,7 +8,7 @@
 BeginPackage["Wolfram`AccessibleColors`"]
 
 WCAGContrastRatio::usage = "WCAGContrastRatio[c1, c2] gives the WCAG 2.x contrast ratio between two colors, from 1 to 21."
-WCAGLevel::usage = "WCAGLevel[c1, c2] gives the WCAG conformance level of a color pair as \"AAA\", \"AA\", or \"Fail\"."
+WCAGLevel::usage = "WCAGLevel[c1, c2] gives the WCAG conformance level of a color pair as \"AAA\" or \"AA\", or Missing[\"BelowThreshold\", ...] if the pair does not reach AA."
 AccessibleTextColor::usage = "AccessibleTextColor[bg] gives the most legible text color for a background."
 AdjustForContrast::usage = "AdjustForContrast[fg, bg] nudges a foreground color until it meets a target contrast against a background."
 
@@ -35,7 +35,7 @@ WCAGLevel[c1_?ColorQ, c2_?ColorQ, opts : OptionsPattern[]] := Block[{
     Which[
         ratio >= aaa, "AAA",
         ratio >= aa, "AA",
-        True, "Fail"
+        True, Missing["BelowThreshold", <|"Ratio" -> ratio, "Minimum" -> aa|>]
     ]
 ]
 

@@ -31,7 +31,7 @@ Check a color pair, then repair it so it passes WCAG AA:
 ```wl
 {WCAGLevel[Gray, White], WCAGLevel[AdjustForContrast[Gray, White], White]}
 ```
-<!-- => {"Fail", "AA"} -->
+<!-- => {Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>], "AA"} -->
 
 Pick legible text for a background:
 
@@ -47,7 +47,7 @@ Grade an arbitrary color pair by its raw ratio and its conformance level:
 ```wl
 {WCAGContrastRatio[Gray, White], WCAGLevel[Gray, White]}
 ```
-<!-- => {3.97665, "Fail"} -->
+<!-- => {3.97665, Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>]} -->
 
 ## Applications
 

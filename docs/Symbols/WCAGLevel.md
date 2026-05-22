@@ -11,11 +11,11 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`WCAGLevel[c$1, c$2]` gives the WCAG conformance level of the color pair `c$1`, `c$2` as `"AAA"`, `"AA"`, or `"Fail"`.
+`WCAGLevel[c$1, c$2]` gives the WCAG conformance level of the color pair `c$1`, `c$2` as `"AAA"` or `"AA"`, or `Missing["BelowThreshold", ...]` if the pair does not reach AA.
 
 ## Details & Options
 
-For normal text the thresholds are 4.5 (AA) and 7 (AAA). With `"LargeText" -> True` they relax to 3 (AA) and 4.5 (AAA).
+For normal text the thresholds are 4.5 (AA) and 7 (AAA). With `"LargeText" -> True` they relax to 3 (AA) and 4.5 (AAA). When the contrast ratio is below the AA threshold the result is a `Missing["BelowThreshold", <|"Ratio" -> r, "Minimum" -> aa|>]` whose reason carries the actual ratio and the threshold it missed.
 
 ## Basic Examples
 
@@ -28,12 +28,13 @@ WCAGLevel[Black, White]
 
 ## Scope
 
-Mid grey on white fails for normal text:
+Mid grey on white falls short for normal text, so the level is `Missing` with the
+ratio and threshold it missed:
 
 ```wl
 WCAGLevel[Gray, White]
 ```
-<!-- => "Fail" -->
+<!-- => Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>] -->
 
 ## Options
 
@@ -57,7 +58,7 @@ Grade a set of foreground greys against a white background at a glance:
 ```wl
 AssociationMap[WCAGLevel[#, White] &, {Black, GrayLevel[0.3], Gray, LightGray}]
 ```
-<!-- => <|Black -> "AAA", GrayLevel[0.3] -> "AAA", Gray -> "Fail", LightGray -> "Fail"|> -->
+<!-- => <|Black -> "AAA", GrayLevel[0.3] -> "AAA", Gray -> Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>], LightGray -> Missing["BelowThreshold", <|"Ratio" -> 1.41496, "Minimum" -> 4.5|>]|> -->
 
 ## Properties and Relations
 
@@ -71,12 +72,13 @@ of 5.74 lands in the AA band (4.5 to 7):
 
 ## Possible Issues
 
-Light grey text on white looks legible but fails even AA:
+Light grey text on white looks legible but does not reach AA, so `WCAGLevel`
+returns `Missing` rather than a level:
 
 ```wl
 WCAGLevel[LightGray, White]
 ```
-<!-- => "Fail" -->
+<!-- => Missing["BelowThreshold", <|"Ratio" -> 1.41496, "Minimum" -> 4.5|>] -->
 
 ## Neat Examples
 
@@ -85,4 +87,4 @@ Levels for a few foreground greys on a white background:
 ```wl
 Table[GrayLevel[g] -> WCAGLevel[GrayLevel[g], White], {g, 0, 0.6, 0.2}]
 ```
-<!-- => {GrayLevel[0.] -> "AAA", GrayLevel[0.2] -> "AAA", GrayLevel[0.4] -> "AA", GrayLevel[0.6] -> "Fail"} -->
+<!-- => {GrayLevel[0.] -> "AAA", GrayLevel[0.2] -> "AAA", GrayLevel[0.4] -> "AA", GrayLevel[0.6] -> Missing["BelowThreshold", <|"Ratio" -> 2.84903, "Minimum" -> 4.5|>]} -->

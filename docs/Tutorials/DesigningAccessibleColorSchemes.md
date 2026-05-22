@@ -36,7 +36,8 @@ WCAGContrastRatio[Gray, White]
 ## Reading Conformance Levels
 
 Raw ratios are easier to act on as WCAG levels. `WCAGLevel` buckets a pair into
-`"AAA"`, `"AA"`, or `"Fail"` using the 4.5 and 7 thresholds for normal text:
+`"AAA"` or `"AA"` using the 4.5 and 7 thresholds for normal text, and returns a
+`Missing["BelowThreshold", ...]` (carrying the ratio it fell short by) otherwise:
 
 ```wl
 AssociationMap[WCAGLevel[#, White] &, {Black, GrayLevel[0.3], Gray, LightGray}]

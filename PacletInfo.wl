@@ -8,6 +8,7 @@ PacletObject[<|
     "License" -> "MIT",
     "Version" -> "1.0.0",
     "WolframVersion" -> "14.0+",
+    "PrimaryContext" -> "Wolfram`AccessibleColors`",
     "Extensions" -> {
         {
             "Kernel",
