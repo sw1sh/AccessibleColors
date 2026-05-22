@@ -18,6 +18,7 @@ Quiet @ CreateDirectory[cacheDir, CreateIntermediateDirectories -> True]
 
 subdir["Symbol"] = {"Documentation", "English", "ReferencePages", "Symbols"}
 subdir["Guide"] = {"Documentation", "English", "Guides"}
+subdir["TechNote"] = {"Documentation", "English", "Tutorials"}
 
 buildDoc[srcFile_String] := Block[{info, tmpl, name, dir, out},
     info = MarkdownToNotebook[srcFile, "Output" -> "Association", "CacheDirectory" -> cacheDir];
@@ -31,7 +32,7 @@ buildDoc[srcFile_String] := Block[{info, tmpl, name, dir, out},
 ]
 
 print["building AccessibleColors documentation"]
-Scan[buildDoc, Sort @ FileNames["*.md", FileNameJoin[{pacletDir, "docs"}]]]
+Scan[buildDoc, Sort @ FileNames["*.md", FileNameJoin[{pacletDir, "docs"}], Infinity]]
 
 (* paclet-repository submission notebook at the paclet root *)
 rd = FileNameJoin[{pacletDir, "ResourceDefinition.md"}]
