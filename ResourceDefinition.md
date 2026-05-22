@@ -7,11 +7,11 @@ Paclet: Wolfram/AccessibleColors
 Description: WCAG color-contrast and accessibility utilities for the Wolfram Language
 ContributedBy: Nikolay Murzin
 Keywords: [accessibility, WCAG, contrast, color, a11y]
-MainGuide: AccessibleColors
+MainGuide: Documentation/English/Guides/AccessibleColors.nb
 License: MIT
 WolframVersion: 14.0+
 Categories: [Visualization & Graphics]
-Sources: ["Web Content Accessibility Guidelines (WCAG) 2.1, W3C Recommendation (2018)"]
+Sources: ["Web Content Accessibility Guidelines (WCAG) 2.1. W3C Recommendation, 5 June 2018"]
 SourceControlURL: https://github.com/sw1sh/AccessibleColors
 Links: ["[WCAG 2.1 contrast guidance](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)"]
 ---
