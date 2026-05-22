@@ -27,7 +27,7 @@ its two arguments.
 WCAGContrastRatio[Black, White]
 ```
 
-A mid grey on white is far weaker:
+A mid gray on white is far weaker:
 
 ```wl
 WCAGContrastRatio[Gray, White]

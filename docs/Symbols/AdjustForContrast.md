@@ -19,7 +19,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Basic Examples
 
-Mid grey on white does not pass AA, so it is darkened until it does:
+Mid gray on white does not pass AA, so it is darkened until it does:
 
 ```wl
 AdjustForContrast[Gray, White]
@@ -65,7 +65,7 @@ With[{fg = AdjustForContrast[GrayLevel[0.5], White]}, {fg, WCAGLevel[fg, White]}
 
 ## Possible Issues
 
-When the target cannot be met even at the extreme (here black on grey tops out
+When the target cannot be met even at the extreme (here black on gray tops out
 near 5.3), the most extreme color is returned rather than failing:
 
 ```wl

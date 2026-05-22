@@ -7,7 +7,7 @@ Paclet: Wolfram/AccessibleColors
 URI: Wolfram/AccessibleColors/guide/AccessibleColors
 Description: WCAG color-contrast and accessibility utilities for the Wolfram Language.
 Keywords: [accessibility, WCAG, contrast, color, a11y]
-RelatedGuides: [Color, ColorSchemes, Accessibility]
+RelatedGuides: [Colors, ColorSchemes, Accessibility]
 Links: ["[WCAG 2.1 contrast guidance](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)"]
 ---
 

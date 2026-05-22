@@ -28,7 +28,7 @@ WCAGLevel[Black, White]
 
 ## Scope
 
-Mid grey on white falls short for normal text, so the level is `Missing` with the
+Mid gray on white falls short for normal text, so the level is `Missing` with the
 ratio and threshold it missed:
 
 ```wl
@@ -53,7 +53,7 @@ WCAGLevel[Gray, White, "LargeText" -> True]
 
 ## Applications
 
-Grade a set of foreground greys against a white background at a glance:
+Grade a set of foreground grays against a white background at a glance:
 
 ```wl
 AssociationMap[WCAGLevel[#, White] &, {Black, GrayLevel[0.3], Gray, LightGray}]
@@ -72,7 +72,7 @@ of 5.74 lands in the AA band (4.5 to 7):
 
 ## Possible Issues
 
-Light grey text on white looks legible but does not reach AA, so `WCAGLevel`
+Light gray text on white looks legible but does not reach AA, so `WCAGLevel`
 returns `Missing` rather than a level:
 
 ```wl
@@ -82,7 +82,7 @@ WCAGLevel[LightGray, White]
 
 ## Neat Examples
 
-Levels for a few foreground greys on a white background:
+Levels for a few foreground grays on a white background:
 
 ```wl
 Table[GrayLevel[g] -> WCAGLevel[GrayLevel[g], White], {g, 0, 0.6, 0.2}]
