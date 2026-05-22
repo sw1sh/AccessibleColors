@@ -26,12 +26,26 @@ The package provides `WCAGContrastRatio`, `WCAGLevel`, `AccessibleTextColor`, an
 
 ## Basic Examples
 
-Check a color pair, then repair it so it passes WCAG AA:
+Measure the contrast between two colors:
 
 ```wl
-{WCAGLevel[Gray, White], WCAGLevel[AdjustForContrast[Gray, White], White]}
+WCAGContrastRatio[Gray, White]
 ```
-<!-- => {Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>], "AA"} -->
+<!-- => 3.97665 -->
+
+Grade a pair against the WCAG thresholds:
+
+```wl
+WCAGLevel[Gray, White]
+```
+<!-- => Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>] -->
+
+Repair a color so it clears AA:
+
+```wl
+WCAGLevel[AdjustForContrast[Gray, White], White]
+```
+<!-- => "AA" -->
 
 Pick legible text for a background:
 
@@ -42,21 +56,35 @@ AccessibleTextColor[RGBColor[0.1, 0.1, 0.4]]
 
 ## Scope
 
-Grade an arbitrary color pair by its raw ratio and its conformance level:
-
-```wl
-{WCAGContrastRatio[Gray, White], WCAGLevel[Gray, White]}
-```
-<!-- => {3.97665, Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>]} -->
-
-## Applications
-
 Choose a legible label color across a whole palette at once:
 
 ```wl
 AssociationMap[AccessibleTextColor, {Orange, Darker[Blue], Yellow, Purple}]
 ```
 <!-- => <|Orange -> GrayLevel[0], Darker[Blue] -> GrayLevel[1], Yellow -> GrayLevel[0], Purple -> GrayLevel[1]|> -->
+
+Build a light/dark adaptive text color for a white-then-black background:
+
+```wl
+LightDarkSwitched[AccessibleTextColor[White], AccessibleTextColor[Black]]
+```
+<!-- => LightDarkSwitched[GrayLevel[0], GrayLevel[1]] -->
+
+## Applications
+
+Track the accessible text color live as a background is dragged:
+
+```wl
+DynamicModule[{bg = LightBlue}, Column[{Framed[Dynamic[Style["Sample", AccessibleTextColor[bg], 20]], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}]]
+```
+<!-- => an interactive panel whose "Sample" text flips between black and white as the color slider moves -->
+
+Show each swatch in a palette labeled with the text color and ratio the package picks:
+
+```wl
+Row[Function[bg, Framed[Style[Row[{"Aa  ", NumberForm[WCAGContrastRatio[AccessibleTextColor[bg], bg], {3, 1}]}], AccessibleTextColor[bg], 16], Background -> bg, FrameMargins -> 12, RoundingRadius -> 6]] /@ {StandardRed, StandardGreen, StandardBlue, Gray}, Spacer[6]]
+```
+<!-- => a row of four colored swatches, each "Aa" + its contrast ratio in the accessible text color -->
 
 ## Hero Image
 
