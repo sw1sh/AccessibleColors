@@ -1,0 +1,6 @@
+.DS_Store
+build/
+*.cache.wxf
+
+# notebooks are generated from docs/ by build.wls; keep the markdown as source
+*.nb
