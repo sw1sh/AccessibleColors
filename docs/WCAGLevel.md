@@ -12,7 +12,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-gives the WCAG conformance level of the color pair `c1`, `c2` as `"AAA"`, `"AA"`, or `"Fail"`.
+`WCAGLevel[c1, c2]` gives the WCAG conformance level of the color pair `c1`, `c2` as `"AAA"`, `"AA"`, or `"Fail"`.
 
 ## Details & Options
 

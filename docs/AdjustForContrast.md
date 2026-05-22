@@ -12,7 +12,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
+`AdjustForContrast[fg, bg]` darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
 
 ## Details & Options
 
