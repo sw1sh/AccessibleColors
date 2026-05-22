@@ -2,7 +2,7 @@
 
 PacletObject[<|
     "Name" -> "Wolfram/AccessibleColors",
-    "Description" -> "WCAG color-contrast and accessibility utilities",
+    "Description" -> "WCAG color-contrast and accessibility utilities for the Wolfram Language",
     "Creator" -> "Nikolay Murzin",
     "PublisherID" -> "Wolfram",
     "License" -> "MIT",
