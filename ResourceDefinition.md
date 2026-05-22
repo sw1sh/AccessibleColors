@@ -5,7 +5,7 @@ Name: Wolfram/AccessibleColors
 Context: Wolfram`AccessibleColors`
 Paclet: Wolfram/AccessibleColors
 Description: WCAG color-contrast and accessibility utilities for the Wolfram Language
-ContributedBy: Nikolay Murzin
+ContributedBy: Nikolay Murzin, Claude (Anthropic)
 Keywords: [accessibility, WCAG, contrast, color, a11y]
 MainGuide: Documentation/English/Guides/AccessibleColors.nb
 License: MIT
@@ -76,7 +76,7 @@ LightDarkSwitched[AccessibleTextColor[White], AccessibleTextColor[Black]]
 Track the accessible text color live as a background is dragged:
 
 ```wl
-DynamicModule[{bg = LightBlue}, Column[{Framed[Dynamic[Style["Sample", AccessibleTextColor[bg], 20]], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}]]
+DynamicModule[{bg = LightBlue}, Column[{Framed[Dynamic[Style["Sample", AccessibleTextColor[bg], 20]], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}], SaveDefinitions -> True]
 ```
 <!-- => an interactive panel whose "Sample" text flips between black and white as the color slider moves -->
 
