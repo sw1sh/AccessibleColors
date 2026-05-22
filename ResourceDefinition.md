@@ -18,11 +18,12 @@ Links: ["[WCAG 2.1 contrast guidance](https://www.w3.org/WAI/WCAG21/Understandin
 
 ## Details & Options
 
-AccessibleColors builds on the Wolfram Language color primitives and adds the WCAG accessibility layer: contrast ratios, conformance levels, and contrast-driven color choices.
+- AccessibleColors builds on the Wolfram Language color primitives ([`ColorConvert`], [`Blend`]) rather than replacing them.
+- It adds the WCAG accessibility layer: contrast ratios, conformance levels, and contrast-driven color choices.
 
 ## Usage
 
-The package provides `WCAGContrastRatio`, `WCAGLevel`, `AccessibleTextColor`, and `AdjustForContrast`.
+The package provides [`WCAGContrastRatio`], [`WCAGLevel`], [`AccessibleTextColor`], and [`AdjustForContrast`].
 
 ## Basic Examples
 

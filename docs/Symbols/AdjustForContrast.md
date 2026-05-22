@@ -15,7 +15,9 @@ RelatedGuides: [AccessibleColors]
 
 ## Details & Options
 
-`"Target"` sets the required ratio (default 4.5, the WCAG AA threshold for normal text). The color is blended toward black or white, whichever increases contrast, by a binary search; if even the extreme cannot reach the target it is returned.
+- `"Target"` sets the required ratio (default 4.5, the WCAG AA threshold for normal text).
+- The color is blended toward black or white — whichever increases contrast — by a binary search until it reaches the [`WCAGContrastRatio`] target.
+- If even the extreme color cannot reach the target, that extreme is returned rather than failing.
 
 ## Basic Examples
 

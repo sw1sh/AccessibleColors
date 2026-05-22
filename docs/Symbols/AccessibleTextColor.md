@@ -15,9 +15,10 @@ RelatedGuides: [AccessibleColors]
 
 ## Details & Options
 
-`"Candidates"` sets the colors to choose from; the one with the greatest `WCAGContrastRatio` against `bg` is returned.
-
-`AccessibleTextColor` complements the built-in color tools. It accepts any color `ColorConvert` understands, including the curated `StandardRed`, `StandardBlue`, ... palette designed for consistent appearance, and chooses legible text to sit on those colors. For light/dark adaptive interfaces, wrap a pair of choices in `LightDarkSwitched` (or supply `LightDarkAutoColorRules`) so the text adapts to the active UI mode. See the [Accessibility](paclet:guide/Accessibility) guide for the broader Wolfram Language accessibility features.
+- `"Candidates"` sets the colors to choose from; the one with the greatest [`WCAGContrastRatio`] against *bg* is returned (black and white by default).
+- It accepts any color [`ColorConvert`] understands, including the curated [`StandardRed`], [`StandardBlue`], ... palette designed for consistent appearance.
+- For light/dark adaptive interfaces, wrap a pair of choices in [`LightDarkSwitched`] (or supply [`LightDarkAutoColorRules`]) so the text adapts to the active UI mode.
+- See the [Accessibility](paclet:guide/Accessibility) guide for the broader Wolfram Language accessibility features.
 
 ## Basic Examples
 
