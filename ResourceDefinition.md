@@ -34,6 +34,8 @@ WCAGContrastRatio[Gray, White]
 ```
 <!-- => 3.97665 -->
 
+---
+
 Grade a pair against the WCAG thresholds:
 
 ```wl
@@ -41,12 +43,16 @@ WCAGLevel[Gray, White]
 ```
 <!-- => Missing["BelowThreshold", <|"Ratio" -> 3.97665, "Minimum" -> 4.5|>] -->
 
+---
+
 Repair a color so it clears AA:
 
 ```wl
 WCAGLevel[AdjustForContrast[Gray, White], White]
 ```
 <!-- => "AA" -->
+
+---
 
 Pick legible text for a background:
 
@@ -64,6 +70,8 @@ AssociationMap[AccessibleTextColor, {Orange, Darker[Blue], Yellow, Purple}]
 ```
 <!-- => <|Orange -> GrayLevel[0], Darker[Blue] -> GrayLevel[1], Yellow -> GrayLevel[0], Purple -> GrayLevel[1]|> -->
 
+---
+
 Build a light/dark adaptive text color for a white-then-black background:
 
 ```wl
@@ -79,6 +87,8 @@ Track the accessible text color live as a background is dragged:
 DynamicModule[{bg = LightBlue}, Column[{Framed[Dynamic[Style["Sample", AccessibleTextColor[bg], 20]], Background -> Dynamic[bg], FrameMargins -> 16], ColorSlider[Dynamic[bg]]}], SaveDefinitions -> True]
 ```
 <!-- => an interactive panel whose "Sample" text flips between black and white as the color slider moves -->
+
+---
 
 Show each swatch in a palette labeled with the text color and ratio the package picks:
 

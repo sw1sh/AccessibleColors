@@ -56,6 +56,8 @@ Association[# -> AccessibleTextColor[#] & /@ {LightBlue, Darker[Green], Yellow, 
 ```
 <!-- => <|LightBlue -> GrayLevel[0], Darker[Green] -> GrayLevel[0], Yellow -> GrayLevel[0], Purple -> GrayLevel[1]|> -->
 
+---
+
 The same works for the built-in `Standard*` palette, so labels on those colors stay legible:
 
 ```wl
@@ -92,6 +94,8 @@ Row[Table[Framed[Style["Ag", AccessibleTextColor[bg], 18], Background -> bg, Fra
 ```
 <!-- => a row of four swatches: "Ag" in black on the light blue and yellow grounds, in white on the dark red and navy grounds -->
 
+---
+
 Make a light/dark adaptive text color with `LightDarkSwitched` - black on the
 light-mode (white) background, white on the dark-mode (black) one:
 
@@ -99,6 +103,8 @@ light-mode (white) background, white on the dark-mode (black) one:
 LightDarkSwitched[AccessibleTextColor[White], AccessibleTextColor[Black]]
 ```
 <!-- => LightDarkSwitched[GrayLevel[0], GrayLevel[1]] -->
+
+---
 
 Track the accessible text color live as the background is dragged:
 

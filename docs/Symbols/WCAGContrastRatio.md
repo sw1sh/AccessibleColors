@@ -55,6 +55,8 @@ WCAGContrastRatio[Blue, Blue]
 ```
 <!-- => 1. -->
 
+---
+
 The ratio is symmetric, so the order of the two colors never matters:
 
 ```wl
