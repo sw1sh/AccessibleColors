@@ -23,7 +23,7 @@ AccessibleTextColor[RGBColor[.1,.1,.4]] (* white *)
 ## Documentation is authored in markdown
 
 This paclet is the reference example for
-[MarkdownToNotebook](https://github.com/sw1sh/AISkills): its documentation is
+[MarkdownToNotebook](https://github.com/sw1sh/MarkdownToNotebook): its documentation is
 written as plain markdown in [`docs/`](docs/) (one file per page, with
 frontmatter for metadata and fenced `wl` cells for examples) and compiled into
 the standard paclet layout under `Documentation/English/` by
@@ -50,7 +50,7 @@ pages here can be built straight from GitHub without cloning:
 
 ```wl
 MarkdownToNotebook[
-  "https://raw.githubusercontent.com/sw1sh/AccessibleColors/main/docs/WCAGContrastRatio.md"
+  "https://raw.githubusercontent.com/sw1sh/AccessibleColors/main/docs/Symbols/WCAGContrastRatio.md"
 ]
 ```
 
