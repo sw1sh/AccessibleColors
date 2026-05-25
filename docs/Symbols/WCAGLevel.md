@@ -11,12 +11,12 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-<code>[`WCAGLevel`]()[$c_1$, $c_2$]</code> gives the WCAG conformance level of the color pair $c_1$, $c_2$ as `"AAA"` or `"AA"`, or `Missing["BelowThreshold", ...]` if the pair does not reach AA.
+<code>[WCAGLevel]()[$c_1$, $c_2$]</code> gives the WCAG conformance level of the color pair $c_1$, $c_2$ as `"AAA"` or `"AA"`, or `Missing["BelowThreshold", ...]` if the pair does not reach AA.
 
 ## Details & Options
 
 - For normal text the thresholds are 4.5 (`"AA"`) and 7 (`"AAA"`); with `"LargeText" -> True` they relax to 3 and 4.5.
-- The level is the [`WCAGContrastRatio`]() bucketed at those thresholds.
+- The level is the [WCAGContrastRatio]() bucketed at those thresholds.
 - Below the `"AA"` threshold the result is `Missing["BelowThreshold", <|"Ratio" -> r, "Minimum" -> aa|>]`, whose reason carries the actual ratio and the threshold it missed.
 
 ## Basic Examples

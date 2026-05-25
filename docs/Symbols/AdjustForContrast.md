@@ -11,12 +11,12 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-<code>[`AdjustForContrast`]()[*fg*, *bg*]</code> darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
+<code>[AdjustForContrast]()[*fg*, *bg*]</code> darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
 
 ## Details & Options
 
 - `"Target"` sets the required ratio (default 4.5, the WCAG AA threshold for normal text).
-- The color is blended toward black or white — whichever increases contrast — by a binary search until it reaches the [`WCAGContrastRatio`]() target.
+- The color is blended toward black or white — whichever increases contrast — by a binary search until it reaches the [WCAGContrastRatio]() target.
 - If even the extreme color cannot reach the target, that extreme is returned rather than failing.
 
 ## Basic Examples
