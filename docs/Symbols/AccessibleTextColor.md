@@ -81,7 +81,9 @@ On a mid-tone background even the best of black or white gives only moderate
 contrast, so a single text color may not reach AAA:
 
 ```wl
-{AccessibleTextColor[GrayLevel[0.5]], WCAGContrastRatio[AccessibleTextColor[GrayLevel[0.5]], GrayLevel[0.5]]}
+With[{bg = GrayLevel[0.5]},
+    {AccessibleTextColor[bg], WCAGContrastRatio[AccessibleTextColor[bg], bg]}
+]
 ```
 <!-- => {GrayLevel[0], 5.28082} -->
 
