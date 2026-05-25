@@ -17,7 +17,7 @@ RelatedGuides: [AccessibleColors]
 
 - The ratio uses WCAG relative luminance: each sRGB channel is linearized, weighted by 0.2126, 0.7152, and 0.0722, and the ratio is (L1 + 0.05) / (L2 + 0.05).
 - It is symmetric in its arguments, so the order of the two colors never matters.
-- Any color expression [`ColorConvert`] understands is accepted.
+- Any color expression [`ColorConvert`]() understands is accepted.
 
 ## Basic Examples
 
