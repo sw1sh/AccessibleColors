@@ -11,7 +11,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`WCAGContrastRatio[c$1, c$2]` gives the WCAG 2.x contrast ratio between colors `c$1` and `c$2`, a number from 1 (no contrast) to 21 (black on white).
+<code>[`WCAGContrastRatio`]()[$c_1$, $c_2$]</code> gives the WCAG 2.x contrast ratio between colors $c_1$ and $c_2$, a number from 1 (no contrast) to 21 (black on white).
 
 ## Details & Options
 

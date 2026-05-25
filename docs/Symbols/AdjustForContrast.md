@@ -11,7 +11,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`AdjustForContrast[fg, bg]` darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
+<code>[`AdjustForContrast`]()[*fg*, *bg*]</code> darkens or lightens the foreground color `fg` until it reaches the target WCAG contrast ratio against the background `bg`, returning the adjusted color.
 
 ## Details & Options
 

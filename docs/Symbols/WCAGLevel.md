@@ -11,7 +11,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`WCAGLevel[c$1, c$2]` gives the WCAG conformance level of the color pair `c$1`, `c$2` as `"AAA"` or `"AA"`, or `Missing["BelowThreshold", ...]` if the pair does not reach AA.
+<code>[`WCAGLevel`]()[$c_1$, $c_2$]</code> gives the WCAG conformance level of the color pair $c_1$, $c_2$ as `"AAA"` or `"AA"`, or `Missing["BelowThreshold", ...]` if the pair does not reach AA.
 
 ## Details & Options
 

@@ -11,7 +11,7 @@ RelatedGuides: [AccessibleColors]
 
 ## Usage
 
-`AccessibleTextColor[bg]` gives the text color (black or white by default) with the highest WCAG contrast against the background `bg`.
+<code>[`AccessibleTextColor`]()[*bg*]</code> gives the text color (black or white by default) with the highest WCAG contrast against the background *bg*.
 
 ## Details & Options
 
