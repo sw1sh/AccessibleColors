@@ -16,17 +16,27 @@ Needs["Wolfram`AccessibleColors`"]
 
 subdir["Symbol"] = {"Documentation", "English", "ReferencePages", "Symbols"}
 subdir["Guide"] = {"Documentation", "English", "Guides"}
+(* Overview shares the tutorial/ URI namespace with TechNotes
+   (DocumentationTools` PreCreateNewPageDialog["Overview"] writes its files
+   to $TutorialDirectory), so they coexist in Documentation/English/Tutorials/. *)
 subdir["TechNote"] = {"Documentation", "English", "Tutorials"}
+subdir["Overview"] = {"Documentation", "English", "Tutorials"}
 
-buildDoc[srcFile_String] := Block[{info, tmpl, name, dir, out},
+(* The output file basename is the SOURCE basename - it must match the last
+   segment of the URI (DocumentationBuild builds the URI from the file path).
+   Symbol / Guide / TechNote pages happen to have the same display "Name:"
+   and basename, but an Overview is the case they can differ - its frontmatter
+   Name: is the rendered title ("AccessibleColors"), while the URI tail and
+   file basename are "Overview". *)
+buildDoc[srcFile_String] := Block[{info, tmpl, baseName, dir, out},
     info = MarkdownToNotebook[srcFile, "Association"];
     tmpl = info["Template"];
-    name = info["Metadata"]["Name"];
+    baseName = FileBaseName[srcFile];
     dir = FileNameJoin[Prepend[subdir[tmpl], pacletDir]];
     Quiet @ CreateDirectory[dir, CreateIntermediateDirectories -> True];
-    out = FileNameJoin[{dir, name <> ".nb"}];
+    out = FileNameJoin[{dir, baseName <> ".nb"}];
     MarkdownToNotebook[srcFile, out];
-    print["  ", FileNameTake[srcFile], " -> Documentation/English/", Last[subdir[tmpl]], "/", name, ".nb"]
+    print["  ", FileNameTake[srcFile], " -> Documentation/English/", Last[subdir[tmpl]], "/", baseName, ".nb"]
 ]
 
 print["building AccessibleColors documentation"]
